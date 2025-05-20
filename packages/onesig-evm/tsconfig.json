@@ -1,0 +1,12 @@
+{
+  "exclude": ["dist", "node_modules"],
+  "include": [
+    "deploy",
+    "test",
+    "hardhat.config.ts",
+    "constants",
+    "src",
+    "typechain-types"
+  ],
+  "extends": "../../tsconfig.base.json"
+}

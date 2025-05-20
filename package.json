@@ -1,0 +1,59 @@
+{
+  "name": "@layerzerolabs/onesig",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm turbo run build",
+    "clean": "pnpm turbo run clean",
+    "dev": "pnpm turbo run dev",
+    "lint": "pnpm turbo run lint",
+    "lint:fix": "pnpm turbo run lint:fix",
+    "prepare": "pnpm husky install",
+    "release:publish": "pnpm changeset publish",
+    "release:version": "pnpm changeset version && pnpm install --lockfile-only --prefer-offline --ignore-scripts",
+    "test": "pnpm turbo run test"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx,json}": [
+      "pnpm prettier --write --ignore-unknown",
+      "pnpm eslint --fix"
+    ]
+  },
+  "resolutions": {
+    "@openzeppelin/contracts": "5.0.2",
+    "es5-ext": "https://github.com/LayerZero-Labs/es5-ext"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@layerzerolabs/prettier-config-next": "3.0.92",
+    "@types/node": "20.10.0",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jest": "^27.6.3",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-turbo": "^1.12.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-solidity": "^1.3.1",
+    "tsup": "8.1.2",
+    "turbo": "2.4.4"
+  },
+  "packageManager": "pnpm@8.14.0",
+  "engines": {
+    "node": ">=20.10.0"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

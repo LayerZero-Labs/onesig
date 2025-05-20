@@ -1,0 +1,13 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build:js": {
+      "outputs": ["dist/**"],
+      "inputs": ["src/**", "tsconfig.json", "tsup.config.ts"],
+      "cache": true
+    },
+    "build": {
+      "dependsOn": ["build:js"]
+    }
+  }
+}

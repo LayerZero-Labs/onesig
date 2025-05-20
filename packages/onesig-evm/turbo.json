@@ -1,0 +1,50 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "forge:build": {
+      "inputs": ["contracts/**/*"],
+      "outputs": ["out/**/*"]
+    },
+    "hardhat:build": {
+      "inputs": ["contracts/**/*"],
+      "outputs": ["artifacts/**/*", "typechain-types/**/*"]
+    },
+    "hardhat:build:zk": {
+      "inputs": ["contracts/**/*"],
+      "outputs": ["artifacts-zk/**/*", "typechain-types/**/*"]
+    },
+    "hardhat:build:tron": {
+      "inputs": ["contracts/**/*"],
+      "outputs": ["artifacts-tron/**/*", "typechain-types/**/*"]
+    },
+    "build:js": {
+      "dependsOn": ["@layerzerolabs/onesig-core#build"],
+      "inputs": ["src/**", "tsconfig.json", "tsup.config.ts"],
+      "outputs": ["dist/**"]
+    },
+    "build": {
+      "dependsOn": [
+        "build:js",
+        "forge:build",
+        "hardhat:build:zk",
+        "hardhat:build:tron",
+        "hardhat:build"
+      ]
+    },
+    "lint:sol": {
+      "inputs": ["contracts/**/*"]
+    },
+    "lint:js": {
+      "dependsOn": ["hardhat:build"]
+    },
+    "forge:test": {
+      "dependsOn": ["@layerzerolabs/onesig-core#build"]
+    },
+    "hardhat:test": {
+      "dependsOn": ["@layerzerolabs/onesig-core#build"]
+    },
+    "test": {
+      "dependsOn": ["forge:test", "hardhat:test"]
+    }
+  }
+}

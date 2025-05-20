@@ -1,0 +1,15 @@
+.prettierignore
+out/
+.turbo/
+dist/
+node_modules/
+.husky/
+.aptos/
+.yarn/
+.pnp.cjs
+.pnp.loader.mjs
+packages/layerzero-v1/evm/0.7/utils/data/proof/**/*.json
+coverage-html/
+**/typechain-types/
+**/idl/
+pnpm-lock.yaml

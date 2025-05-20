@@ -1,0 +1,38 @@
+node_modules
+.env
+coverage
+coverage.json
+deployed
+dist
+typechain
+typechain-types
+
+# Logs
+logs
+*.log
+pnpm-debug.log*
+pnpm-error.log*
+
+# Turbo cache
+.turbo
+
+# LayerZero specific files
+.layerzero
+
+# Build artifacts
+dist
+
+# pnpm
+pnpm-error.log
+
+# Editor and OS files
+.DS_Store
+.idea
+
+# Certora
+.certora_internal
+gambit_out
+collect.json
+
+# Changesets files
+.netrc

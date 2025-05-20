@@ -1,0 +1,98 @@
+{
+  "name": "@layerzerolabs/onesig-evm",
+  "version": "0.0.13",
+  "license": "GPL-3.0-only",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "contracts/**/*.sol",
+    "artifacts/contracts/**/!(*.dbg).json",
+    "artifacts-zk/contracts/**/!(*.dbg).json",
+    "artifacts-tron/contracts/**/!(*.dbg).json",
+    "typechain-types/**/*",
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build:js": "pnpm tsup --config ../../tsup.config.ts ./src/index.ts",
+    "clean": "pnpm clean:prebuild && rimraf cache out artifacts artifacts-zk artifacts-tron typechain-types",
+    "clean:prebuild": "rimraf dist",
+    "forge:build": "forge build",
+    "forge:test": "forge test",
+    "format:fix": "pnpm prettier --no-error-on-unmatched-pattern --ignore-unknown -w .",
+    "hardhat:build": "pnpm hardhat compile",
+    "hardhat:build:tron": "pnpm hardhat compile --network tron",
+    "hardhat:build:zk": "pnpm hardhat compile --network zksync",
+    "hardhat:test": "pnpm hardhat test",
+    "lint:fix": "eslint --fix '**/*.{js,ts,json}' && prettier --write . && solhint 'contracts/**/*.sol' --fix --noPrompt",
+    "lint:js": "eslint '**/*.{js,ts,json}' && prettier --check .",
+    "lint:sol": "solhint 'contracts/**/*.sol'"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": [
+      "pnpm prettier --write --ignore-unknown .",
+      "pnpm eslint --fix"
+    ],
+    "**/*.json": [
+      "pnpm prettier --write --ignore-unknown ."
+    ],
+    "**/*.sol": [
+      "pnpm prettier --write --ignore-unknown .",
+      "pnpm solhint --fix --noPrompt"
+    ]
+  },
+  "dependencies": {
+    "@layerzerolabs/onesig-core": "workspace:*",
+    "ethers": "^5.8.0"
+  },
+  "devDependencies": {
+    "@ethersproject/abstract-provider": "^5.8.0",
+    "@layerzerolabs/eslint-config-next": "^3.0.92",
+    "@layerzerolabs/hardhat-tron": "^3.0.92",
+    "@layerzerolabs/prettier-config-next": "^3.0.92",
+    "@layerzerolabs/solhint-config": "^3.0.92",
+    "@layerzerolabs/toolbox-foundry": "~0.1.12",
+    "@matterlabs/hardhat-zksync-solc": "~1.0.3",
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",
+    "@nomicfoundation/hardhat-ethers": "^3.0.5",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@openzeppelin/contracts": "5.0.2",
+    "@rushstack/eslint-patch": "^1.7.0",
+    "@typechain/ethers-v5": "^10.2.1",
+    "@typechain/hardhat": "^6.1.6",
+    "@types/chai": "^4.3.11",
+    "@types/node": "20.10.0",
+    "chai": "~4.3.10",
+    "chai-ethers": "^0.0.1",
+    "dotenv": "^16.4.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-jest-extended": "~2.0.0",
+    "hardhat": "~2.19.0",
+    "hardhat-contract-sizer": "^2.10.0",
+    "hardhat-deploy": "^0.12.4",
+    "hardhat-deploy-ethers": "^0.4.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "solhint": "^5.0.5",
+    "solidity-bytes-utils": "^0.8.2",
+    "solidity-coverage": "^0.8.12",
+    "typechain": "^8.3.2",
+    "typescript": "^5.3.3"
+  },
+  "packageManager": "pnpm@8.14.0",
+  "engines": {
+    "node": ">=20.10.0"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

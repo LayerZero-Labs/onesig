@@ -1,0 +1,72 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "dependsOn": ["build"],
+      "outputs": [],
+      "persistent": true
+    },
+    "lint:sol": {
+      "inputs": ["**/*.sol"]
+    },
+    "lint:js": {
+      "inputs": [
+        "**/*.ts",
+        "**/*.js",
+        "**/*.json",
+        ".prettierignore",
+        ".eslintrc.js"
+      ]
+    },
+    "lint": {
+      "dependsOn": ["lint:js", "lint:sol"]
+    },
+    "lint:fix": {
+      "cache": false
+    },
+    "test": {
+      "cache": false,
+      "dependsOn": ["build"],
+      "outputs": []
+    }
+  },
+  "globalDependencies": ["tsconfig.json"],
+  "globalPassThroughEnv": [
+    "EVM_PATH",
+    "LZ_ENABLE_EXPERIMENTAL_TASK_LZ_OAPP_CONFIG_INIT",
+    "LAYERZERO_EXAMPLES_REPOSITORY_URL",
+    "LAYERZERO_EXAMPLES_REPOSITORY_REF",
+    "MNEMONIC",
+    "MNEMONIC_SANDBOX",
+    "MNEMONIC_TESTNET",
+    "MNEMONIC_MAINNET",
+    "MNEMONIC_TON",
+    "PRIVATE_KEY",
+    "NETWORK_URL_TANGO",
+    "NETWORK_URL_TON_SANDBOX",
+    "NETWORK_URL_TON_TESTNET",
+    "NETWORK_URL_TON_MAINNET",
+    "NETWORK_URL_TRON_SANDBOX",
+    "NETWORK_URL_ARBSEP_TESTNET",
+    "NETWORK_URL_CELO_TESTNET",
+    "NETWORK_URL_SEPOLIA_TESTNET",
+    "NETWORK_URL_TRON_TESTNET",
+    "NETWORK_URL_ARBITRUM_MAINNET",
+    "NETWORK_URL_CELO_MAINNET",
+    "NETWORK_URL_ETHEREUM_MAINNET",
+    "NETWORK_URL_TRON_MAINNET",
+    "CI",
+    "TRON_API_KEY",
+    "TON_FOR_GAS",
+    "NETWORK_API_TON_MAINNET",
+    "NETWORK_API_TON_TESTNET",
+    "NETWORK_API_TON_SANDBOX"
+  ]
+}
